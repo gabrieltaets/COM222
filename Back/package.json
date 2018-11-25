@@ -1,0 +1,25 @@
+{
+  "name": "com222-back",
+  "version": "1.0.0",
+  "description": "Back-End para o aplicativo web da disciplina COM222 ministrado pelo Prof. Laércio Baldochi, da Universidade Federal de Itajubá",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "mocha"
+  },
+  "author": "Gabriel Taets",
+  "license": "ISC",
+  "dependencies": {
+    "await-to-js": "^2.1.1",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "moment": "^2.22.2",
+    "mysql2": "^1.6.4",
+    "sequelize": "^4.41.2"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0"
+  }
+}
