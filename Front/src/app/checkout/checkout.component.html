@@ -1,0 +1,32 @@
+<app-loader size="4" *ngIf="!orderItems || !books"></app-loader>
+<div class="container" *ngIf="orderItems && books">
+    <h4 class="text-center">Seu pedido foi efetuado!</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Título</th>
+                <th scope="col">Preço</th>
+                <th scope="col">Qtd</th>
+                <th scope="col">Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of orderItems; let i = index">
+                <th class="align-middle" scope="row">{{i+1}}</th>
+                <td class="align-middle"><a href="javascript:void(0)" routerLink="/book/{{item.ISBN}}">{{item.title}}</a></td>
+                <td class="align-middle">{{item.price}}</td>
+                <td class="align-middle">{{item.qty}}</td>
+                <td class="align-middle">{{item.qty*item.price | number:'1.2-2'}}</td>
+            </tr>
+            <tr>
+                <th class="align-middle text-right" scope="row" colspan="2">Frete</th>
+                <td class="align-middle text-right" colspan="3">R$ {{frete | number:'1.2-2'}}</td>
+            </tr>
+            <tr>
+                <th class="align-middle text-right" scope="row" colspan="2">Total</th>
+                <td class="align-middle text-right" colspan="3">R$ {{total | number:'1.2-2'}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

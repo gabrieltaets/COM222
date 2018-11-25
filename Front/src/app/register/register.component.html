@@ -1,0 +1,42 @@
+<div class="container mt-3 mb-5">
+    <form class="form m-auto" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="login">Username</label>
+            <input type="text" class="form-control" id="login" placeholder="Login" formControlName="login" required/>
+        </div>
+        <div class="form-group">
+            <label for="password">Senha</label>
+            <input type="password" class="form-control" id="password" placeholder="Senha" formControlName="password" required/>
+        </div>
+        <div class="form-group">
+            <label for="name">Nome Completo</label>
+            <input type="text" class="form-control" id="name" placeholder="Fulano de Tal" formControlName="name" required/>
+        </div>
+        <div class="form-group">
+            <label for="login">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="exemplo@dominio.com" formControlName="email" required/>
+        </div>
+        <div class="form-group">
+            <label for="address">Endereço</label>
+            <input type="text" class="form-control" id="address" placeholder="Rua, Avenida, etc." formControlName="address" required/>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-9">
+                <label for="city">Cidade</label>
+                <input type="text" class="form-control" id="city" placeholder="Cidade" formControlName="city" required/>
+            </div>
+            <div class="form-group col-3">
+                <label for="state">UF</label>
+                <select formControlName="state" required class="form-control" id="state">
+                    <option></option>
+                    <option *ngFor="let s of states">{{s}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="phone">Telefone</label>
+            <input type="phone" class="form-control" id="phone" placeholder="11 98765 4321" formControlName="phone" required/>
+        </div>
+        <button type="submit" class="btn btn-secondary" [disabled]="!form.valid">Registrar</button>
+    </form>
+</div>

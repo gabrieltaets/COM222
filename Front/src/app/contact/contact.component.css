@@ -1,0 +1,8 @@
+img {
+    max-width: 256px;
+    max-height: 256px;
+}
+
+.container-fluid {
+    height: 100%;
+}

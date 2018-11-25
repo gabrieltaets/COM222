@@ -1,0 +1,11 @@
+<div class="container mb-4">
+    <h5><a href="javascript:void(0)" routerLink="/book/{{book.ISBN}}">{{book.title}}</a></h5>
+    <div class="clearfix">
+        <div class="float-left pr-3">
+            <a href="javascript:void(0)" routerLink="/book/{{book.ISBN}}">
+                <img src="http://yorktown.cbe.wwu.edu/sandvig/mis314/assignments/bookstore/bookimages/{{book.ISBN}}.01.MZZZZZZZ.jpg"/>
+            </a>
+        </div>
+        <p>{{book.shortDescription}}<a href="javascript:void(0)" routerLink="/book/{{book.ISBN}}"> more</a></p>
+    </div>
+</div>

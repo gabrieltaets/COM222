@@ -1,0 +1,15 @@
+<div class="sidebar">
+    <div class="input-group mb-3 mt-2">
+        <input type="text" class="form-control" placeholder="Buscar..." [(ngModel)]="input" (keydown.enter)="search()">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" (click)="search()"><i class="fas fa-search"></i></button>
+        </div>
+    </div>
+    <h5>Categorias</h5>
+    <app-loader *ngIf="!allCategories" [size]='2' height='200px'></app-loader>
+    <div class="list-group" *ngIf="allCategories">
+        <a href="#" class="list-group-item list-group-item-action" *ngFor="let c of allCategories" routerLinkActive="active list-group-item-secondary" routerLink="/category/{{c.id}}">
+            {{c.name}}
+        </a>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<app-loader size="4" *ngIf="!book"></app-loader>
+<div class="container" *ngIf="book">
+    <h5>{{book.title}}</h5>
+    <p>Por {{authors}}</p>
+    <div class="clearfix">
+        <div class="float-left pr-3">
+            <img src="http://yorktown.cbe.wwu.edu/sandvig/mis314/assignments/bookstore/bookimages/{{book.ISBN}}.01.LZZZZZZZ.jpg"/>
+        </div>
+        <span><strong>ISBN:</strong> {{book.ISBN}}</span><br/>
+        <span><strong>Publisher:</strong> {{book.publisher}}</span><br/>
+        <span><strong>Pages:</strong> {{book.pages}}</span><br/>
+        <br/>
+        <h5>
+            Preço: R$ {{book.price}}
+            <button class="btn btn-primary ml-4" (click)="addToCart()">Comprar</button>
+        </h5>
+        <br/>
+        <p innerHTML="{{book.description}}"></p>
+    </div>
+</div>
