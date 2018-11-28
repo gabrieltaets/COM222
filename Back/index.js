@@ -150,6 +150,7 @@ app.post('/orders', async (req, res) => {
 })
 
 function handle(response, status, error) {
+    console.log(error);
     response.status(status).json({
         status: status,
         message: error

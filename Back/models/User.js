@@ -39,7 +39,7 @@ module.exports = function(sequelize, DataTypes) {
         let [err, user] = await to(User.findByPk(login));
         if(err || !user) return Promise.resolve(null);
         if(hash(pwd, user.salt) !== user.password && pwd !== user.token) return Promise.resolve(null);
-        if(!user.token) {
+        if(!user.token || user.token === '') {
             user.token = hash(login, crypto.randomBytes(16).toString('hex'));
             [err, user] = await to(user.save());
             if(err) return Promise.reject('Something went wrong.');

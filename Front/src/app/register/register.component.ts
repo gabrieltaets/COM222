@@ -21,13 +21,13 @@ export class RegisterComponent implements OnInit {
     constructor(public fb: FormBuilder, public auth: AuthService, public router: Router, public toasterService: ToasterService) {
         this.form = fb.group({
             login: ['', Validators.required],
-            password: ['', Validators.required],
-            email: ['', Validators.required],
+            password: ['', [Validators.required, Validators.minLength(4)]],
+            email: ['', [Validators.required, Validators.email]],
             name: ['', Validators.required],
             address: ['', Validators.required],
             city: ['', Validators.required],
             state: ['', Validators.required],
-            phone: ['', Validators.required],
+            phone: ['', [Validators.required, Validators.pattern(/^\d+[0-9]+$/), Validators.minLength(8)]],
         });
     }
 
@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
 
     onSubmit() {
         let values = this.form.value;
-        this.auth.update(values).subscribe(user => {
+        this.auth.register(values).subscribe(user => {
             this.toasterService.pop({
                 type: 'success',
                 body: 'Registrado! Você já pode fazer login.'
@@ -44,12 +44,7 @@ export class RegisterComponent implements OnInit {
             this.router.navigate(['/home']);
         }, err => {
             let message = 'Username indisponível!';
-            if(err.error.message.fields['PRIMARY']) {
-                this.form.controls.login.setErrors({notUnique: true});
-            } else {
-                this.form.controls.email.setErrors({notUnique: true});
-                message = 'Email já utilizado!';
-            }
+            this.form.controls.login.setErrors({notUnique: true});
             this.toasterService.pop({
                 type: 'error',
                 body: message
